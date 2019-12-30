@@ -15,18 +15,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     UserDetailsService userDetailsService;
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+    protected void configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
     }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/").permitAll()
-                .and().authorizeRequests().antMatchers("/user/**").hasAnyRole("USER","ADMIN")
-                .and().authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
-                .and()
-                .formLogin()
-                .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
-    }
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userDetailsService);
+//    }
+
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.authorizeRequests().antMatchers("/").permitAll()
+//                .and().authorizeRequests().antMatchers("/user/**").hasAnyRole("USER","ADMIN")
+//                .and().authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN")
+//                .and()
+//                .formLogin()
+//                .and()
+//                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
+//    }
 }
