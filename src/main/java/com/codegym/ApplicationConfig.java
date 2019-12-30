@@ -1,4 +1,6 @@
 package com.codegym;
+import com.codegym.services.CustomerService;
+import com.codegym.services.impl.CustomerServiceImpl;
 import com.codegym.services.impl.UserServiceImpl;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -49,10 +51,10 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
 //        return new CustomerRepositoryImpl();
 //    }
 //
-//    @Bean
-//    public CustomerService customerService(){
-//        return new CustomerServiecImpl();
-//    }
+    @Bean
+    public CustomerService customerService(){
+        return new CustomerServiceImpl();
+    }
 
     //JPA configuration
 
